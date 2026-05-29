@@ -50,8 +50,8 @@ On the 2021 hold-out, the MLP and gradient-boosting models clearly outperform th
 ## Installation
 
 ```bash
-git clone https://github.com/mlahozy21/Electricity-Demand-Forecasting-in-France..git
-cd Electricity-Demand-Forecasting-in-France.
+git clone https://github.com/mlahozy21/Electricity-Demand-Forecasting-in-France.git
+cd Electricity-Demand-Forecasting-in-France
 
 python -m venv .venv
 source .venv/bin/activate          # On Windows: .venv\Scripts\activate
