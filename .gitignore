@@ -18,3 +18,11 @@ submissions/
 Thumbs.db
 .vscode/
 .idea/
+
+# LaTeX build artifacts (only the PDF is versioned)
+docs/*.aux
+docs/*.log
+docs/*.out
+docs/*.fls
+docs/*.fdb_latexmk
+docs/*.synctex.gz

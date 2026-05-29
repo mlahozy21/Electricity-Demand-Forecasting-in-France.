@@ -2,7 +2,7 @@
 
 Forecasting half-hourly electricity demand for **France, its 12 regions and 12 métropoles** (25 series) for the year 2022, from weather and calendar features. Built around the [Codabench data challenge](https://www.codabench.org/) metric: the **sum of the per-series RMSE**.
 
-This repository is the **deep-learning forecasting** part of the project (by Marcos Lahoz), rebuilt from the original challenge notebook into a clean, installable Python package. The companion statistical-learning study (joint work with Samuel Molano and Mohamed Amine Grini) is summarised in `docs/statistical_learning_report.pdf` (code: https://github.com/SamuelMolano/ModelisationPredictive).
+This repository is the **deep-learning forecasting** part of the project (by Marcos Lahoz), rebuilt from the original challenge notebook into a clean, installable Python package. A short technical report is in [`docs/report.pdf`](docs/report.pdf). The companion statistical-learning study (joint work with Samuel Molano and Mohamed Amine Grini) is summarised in `docs/statistical_learning_report.pdf` (code: https://github.com/SamuelMolano/ModelisationPredictive).
 
 ## Problem
 
