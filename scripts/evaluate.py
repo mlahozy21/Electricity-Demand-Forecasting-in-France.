@@ -7,9 +7,6 @@ metric (sum of per-column RMSE), prints a table and saves results + figures.
 import argparse
 import os
 
-import matplotlib
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt
 import pandas as pd
 
 from edf import metrics, pipeline
@@ -50,17 +47,26 @@ def main():
     table = pd.DataFrame(rows).sort_values("challenge_score")
     table.to_csv(os.path.join(args.out_dir, "metrics.csv"), index=False)
 
-    # Figure: per-target RMSE for the best model.
     best = table.iloc[0]["model"]
-    rmse = metrics.per_column_rmse(yva, preds[best])
-    fig, ax = plt.subplots(figsize=(10, 6))
-    ax.barh(TARGETS, rmse, color="#1f77b4")
-    ax.set_xlabel("RMSE")
-    ax.set_title(f"Per-series RMSE on {args.val_year} — {best}")
-    ax.invert_yaxis()
-    plt.tight_layout()
-    fig.savefig(os.path.join(args.out_dir, "per_series_rmse.png"), dpi=150)
-    print(f"\nResults written to {args.out_dir}/ (best model: {best})")
+    print(f"\nMetrics written to {args.out_dir}/metrics.csv (best model: {best})")
+
+    # Figure: per-target RMSE for the best model (optional; skipped if matplotlib fails).
+    try:
+        import matplotlib
+        matplotlib.use("Agg")
+        import matplotlib.pyplot as plt
+
+        rmse = metrics.per_column_rmse(yva, preds[best])
+        fig, ax = plt.subplots(figsize=(10, 6))
+        ax.barh(TARGETS, rmse, color="#1f77b4")
+        ax.set_xlabel("RMSE")
+        ax.set_title(f"Per-series RMSE on {args.val_year} — {best}")
+        ax.invert_yaxis()
+        plt.tight_layout()
+        fig.savefig(os.path.join(args.out_dir, "per_series_rmse.png"), dpi=150)
+        print(f"Figure written to {args.out_dir}/per_series_rmse.png")
+    except Exception as e:
+        print(f"(Skipping figure — matplotlib unavailable: {e})")
 
 
 if __name__ == "__main__":
