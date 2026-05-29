@@ -9,7 +9,7 @@ from edf import pipeline
 def main():
     ap = argparse.ArgumentParser(description="Generate the 2022 submission.")
     ap.add_argument("--raw-dir", default="data/raw")
-    ap.add_argument("--model", default="mlp", choices=["baseline", "mlp", "gbm"])
+    ap.add_argument("--model", default="gbm", choices=["baseline", "mlp", "gbm"])
     ap.add_argument("--out", default="submissions/submission.csv")
     ap.add_argument("--epochs", type=int, default=300, help="Max epochs for the MLP.")
     ap.add_argument("--template", default=None,

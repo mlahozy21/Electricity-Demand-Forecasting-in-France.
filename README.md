@@ -23,7 +23,17 @@ This repository is the **deep-learning forecasting** part of the project (by Mar
 - `TorchMLP` — the project's neural network, rebuilt: a 2-hidden-layer MLP with batch-norm and dropout, Xavier init, mini-batch training, early stopping on the validation metric, and trained directly on the **sum-of-RMSE loss** (the challenge metric); the network predicts in standardised output space for stable optimisation while the loss is computed on the raw scale.
 - `GBMModel` — one `HistGradientBoostingRegressor` per series (scikit-learn), fitted in parallel.
 
-On the 2021 hold-out, the MLP and gradient-boosting models clearly outperform the seasonal baseline (baseline `challenge_score ≈ 11541`). Run `scripts/evaluate.py` to reproduce the exact figures and the per-series RMSE figure.
+### Results (2021 hold-out)
+
+Validation on the 2021 hold-out year, scored with the challenge metric (sum of the per-series RMSE; lower is better):
+
+| Model | Challenge score | MAE |
+|-------|----------------:|----:|
+| Seasonal baseline | 11541.1 | 332.5 |
+| MLP (PyTorch) | 9834.9 | 321.0 |
+| **Gradient boosting** | **7036.6** | **211.1** |
+
+Gradient boosting is the strongest model (**−39%** vs. the seasonal baseline). Reproduce with `python scripts/evaluate.py --raw-dir data/raw --models baseline mlp gbm`.
 
 ## Project structure
 
@@ -83,7 +93,7 @@ python scripts/prepare_data.py --raw-dir data/raw --out-dir data/processed
 python scripts/evaluate.py --raw-dir data/raw --models baseline mlp gbm
 
 # 3. train on the full history and generate the 2022 submission
-python scripts/make_submission.py --raw-dir data/raw --model mlp --out submissions/submission.csv
+python scripts/make_submission.py --raw-dir data/raw --model gbm --out submissions/submission.csv
 ```
 
 `make_submission.py` accepts an optional `--template pred.csv` to match the official submission column names/order.
