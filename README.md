@@ -2,7 +2,7 @@
 
 Forecasting half-hourly electricity demand for **France, its 12 regions and 12 métropoles** (25 series) for the year 2022, from weather and calendar features. Built around the [Codabench data challenge](https://www.codabench.org/) metric: the **sum of the per-series RMSE**.
 
-This repository is the **deep-learning forecasting** part of the project (by Marcos Lahoz), rebuilt from the original challenge notebook into a clean, installable Python package. A short technical report is in [`docs/report.pdf`](docs/report.pdf). The companion statistical-learning study (joint work with Mohamed Amine Grini and Samuel Molano) lives in a separate repository: [Electricity-Net-Demand-Statistical-Learning](https://github.com/mlahozy21/Electricity-Net-Demand-Statistical-Learning).
+This repository is the **deep-learning forecasting** part of the project (by Marcos Lahoz), rebuilt from the original challenge notebook into a clean, installable Python package. A short technical report is in [`docs/report.pdf`](docs/report.pdf). The companion statistical-learning study (joint work with Mohamed Amine Grini and Samuel Molano) lives in a separate repository: [Electricity-Net-Demand-Statistical-Learning](https://github.com/mlahozy21/Electricity-Demand-Forecasting-Statistical-Models).
 
 ## Problem
 
@@ -60,8 +60,8 @@ Gradient boosting is the strongest model (**−39%** vs. the seasonal baseline).
 ## Installation
 
 ```bash
-git clone https://github.com/mlahozy21/Electricity-Demand-Forecasting-in-France.git
-cd Electricity-Demand-Forecasting-in-France
+git clone https://github.com/mlahozy21/Deep-Learning-Electricity-Demand-Forecasting.git
+cd Deep-Learning-Electricity-Demand-Forecasting
 
 python -m venv .venv
 source .venv/bin/activate          # On Windows: .venv\Scripts\activate
